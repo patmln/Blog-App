@@ -1,0 +1,39 @@
+<h1>Hello from index page</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Verified</th>
+            <th>Date Verified</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    <% @authors.each do |author| %>
+        <tr>
+            <td>
+            <%= author.name %>
+            </td>
+            <td>
+            <%= author.address %>
+            </td>
+            <td>
+            <%= author.is_verified %>
+            </td>
+            <td>
+            <%= author.date %>
+            </td>
+            <td>
+            <%= link_to 'View', author_path(author) %>
+            <%= link_to 'Edit', edit_author_path(author) %>
+            <%= link_to 'Delete', author, method: :delete, data: {confirm: 'Are you sure?'} %>
+            </td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+
+<%= link_to 'Add new author', new_author_path %>

@@ -1,0 +1,34 @@
+<body style="background-color: <%= ColorRandomizer::Client.create[:data]['color'] %>;" >
+
+<h2><%= @article.title %></h2>
+
+<h2>Comments</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Comment Body</th>
+            <th colspan="2"> Action </th>
+        </tr>
+    </thead>
+
+    <tbody>
+    <% @comments.each do |comment| %>
+        <tr>
+            <td>
+            <%= comment.body %>
+            </td>
+            <td>
+            <%= link_to 'Edit', edit_article_comment_path(@article.id, comment.id) %>
+            <%= link_to 'Delete', article_comment_path(@article.id, comment.id), method: :delete, data: {confirm: 'Are you sure?'} %>
+            </td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+
+<%= link_to 'Add new comment', new_article_comment_path %>
+
+<%= link_to 'Add fake comment', create_new_article_comments_path %>
+
+<%= link_to 'Go back', articles_path %>

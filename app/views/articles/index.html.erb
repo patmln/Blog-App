@@ -1,0 +1,43 @@
+<body style="background-color: <%= ColorRandomizer::Client.create[:data]['color'] %>;" >
+
+<h1>Hello from index page</h1>
+
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Comment Count</th>
+            <th colspan="4"> Action </th>
+        </tr>
+    </thead>
+
+    <tbody>
+    <% @articles.each do |article| %>
+        <tr>
+            <td>
+            <%= article.title %>
+            </td>
+            <td>
+            <%= article.content %>
+            </td>
+            <td>
+            <%= article.comments.count %>
+            </td>
+            <td>
+            <%= link_to 'Comments', article_comments_path(article.id) %>
+            <%= link_to 'View', article_path(article) %>
+            <%= link_to 'Edit', edit_article_path(article) %>
+            <%= link_to 'Delete', article, method: :delete, data: {confirm: 'Are you sure?'} %>
+            </td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+
+<%= link_to 'Add new article', new_article_path %>
+
+<%= link_to 'Add fake article', create_new_articles_path %>
+

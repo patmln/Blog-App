@@ -1,0 +1,14 @@
+<body style="background-color: <%= ColorRandomizer::Client.create[:data]['color'] %>;" >
+
+<%= form_with scope: :comment, model:[@article,@comment] do |form| %>
+
+<p>
+<%= form.label :body %>
+<%= form.text_field :body %>
+</p>
+    
+<%= form.submit %>
+    
+<% end %>
+
+<%= link_to 'Go back', article_comments_path(@article.id) %>

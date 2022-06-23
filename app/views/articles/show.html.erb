@@ -1,0 +1,14 @@
+<body style="background-color: <%= ColorRandomizer::Client.create[:data]['color'] %>;" >
+
+<h1>Hello from Show page</h1>
+
+<h1><%= @id %></h1>
+
+<p>Title:
+    <span><%= @article.title %></span>
+</p>
+
+<h3><%= @article.content %></h3>
+
+<%= link_to 'Go to articles page', articles_path %>
+
